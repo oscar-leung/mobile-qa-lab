@@ -40,3 +40,20 @@ python3 android_install_smoke.py org.wikipedia
 ## Requirements
 - Python 3.9+, `adb` (Android platform-tools), `scrcpy` for recording (`brew install scrcpy`)
 - USB debugging or Wireless debugging on the phone, screen unlocked
+
+## Appium suite (same flow, real device)
+`appium/test_wikipedia_android.py` drives the OnePlus 11 through Appium + UiAutomator2 and searches Wikipedia for "Davis, California". **Passes in ~10 s.**
+
+Real-device problems it handles, found while building it:
+- **First-launch onboarding** on a fresh install: taps Skip / Forward until the feed shows.
+- **A promo sheet** ("A Faster way to Search" widget offer) covering the nav bar: dismissed with Back before continuing.
+- **Results re-render while typing** (StaleElementReference): the wait re-finds rows on every poll.
+- **Result rows have no resource-id** in this app version: matched by class + text instead.
+
+```bash
+npm i -g appium && appium driver install uiautomator2
+pip install Appium-Python-Client pytest
+export ANDROID_HOME=~/Library/Android/sdk
+appium &
+ANDROID_UDID=<serial or ip:5555> pytest appium/test_wikipedia_android.py -v
+```
