@@ -33,8 +33,9 @@ python3 android_install_smoke.py org.wikipedia
 - **"Install and record" usability tests**: think-aloud recordings of onboarding.
 - **Cross-device bug reports**: same steps on iOS and Android, with device, OS, build, steps, expected vs actual and evidence.
 
-## Sample run
-[Real report from the OnePlus 11](runs/sample-oneplus11-wikipedia/report.md): Wikipedia installed from Google Play in 7 s, launched, scrolled, 8/8 checks passed, with screenshots and a screen recording.
+## Sample runs
+- [iPhone 17 Pro Max report](runs/sample-iphone17-wikipedia/report.md): same app installed from the App Store and tested through iPhone Mirroring on the Mac, 6/6 steps passed.
+- [Real report from the OnePlus 11](runs/sample-oneplus11-wikipedia/report.md): Wikipedia installed from Google Play in 7 s, launched, scrolled, 8/8 checks passed, with screenshots and a screen recording.
 
 ## Requirements
 - Python 3.9+, `adb` (Android platform-tools), `scrcpy` for recording (`brew install scrcpy`)
